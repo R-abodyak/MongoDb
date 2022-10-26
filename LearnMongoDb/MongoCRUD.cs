@@ -16,5 +16,6 @@ public class MongoCRUD
         var collection = db.GetCollection<T>(collectionName);
         collection.InsertOne(record);
     }
+    
 }
 
