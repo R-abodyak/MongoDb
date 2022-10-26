@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace LearnMongoDb;
 
@@ -16,6 +17,12 @@ public class MongoCRUD
         var collection = db.GetCollection<T>(collectionName);
         collection.InsertOne(record);
     }
-    
+    public List<T> FindRecordsbyName<T> (string table, string name)
+    {
+        var collection = db.GetCollection<T>(table);
+        var filter = Builders<T>.Filter.Eq("UserName", name);
+        
+        return collection.Find(filter).ToList();
+    }
 }
 

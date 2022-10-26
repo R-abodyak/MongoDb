@@ -1,5 +1,9 @@
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace LearnMongoDb;
 
+
+[BsonIgnoreExtraElements]
 public class UserModel
 {
     public string UserName { get; set; }
