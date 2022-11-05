@@ -24,5 +24,12 @@ public class MongoCRUD
         
         return collection.Find(filter).ToList();
     }
+
+    public void upsert <T> (string table, string name, T record)
+    {
+        var collection = db.GetCollection<T>(table);
+        collection.ReplaceOne(new BsonDocument("UserName", name), record, new UpdateOptions{IsUpsert= true} );
+    }
+    
 }
 
